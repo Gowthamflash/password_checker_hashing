@@ -1,4 +1,0 @@
-# Vercel deployment settings only. Dependencies stay in requirements.txt.
-# run.py defines the top-level Flask instance `app` (created by backend.app.create_app()).
-[tool.vercel]
-entrypoint = "run:app"
