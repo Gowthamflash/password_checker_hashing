@@ -1,0 +1,14 @@
+# Vercel deployment settings. Vercel reads the dependencies below (keep them in sync with requirements.txt,
+# which is used for local installs: pip install -r requirements.txt).
+[project]
+name = "stack-password-checking-and-hashing"
+version = "1.0.0"
+description = "Privacy-first cybersecurity toolkit: password checker, AES-256-GCM encryption, SHA-2 hashing and hash verification."
+requires-python = ">=3.10"
+dependencies = [
+    "Flask>=3.0,<4",
+]
+
+# run.py defines the top-level Flask instance `app` (created by backend.app.create_app()).
+[tool.vercel]
+entrypoint = "run:app"

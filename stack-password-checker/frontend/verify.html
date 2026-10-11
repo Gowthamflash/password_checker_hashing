@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hash Verification — Stack Password Checking and Hashing</title>
+<meta name="description" content="Check a file against a published SHA-256 hash, locally in your browser.">
+<meta name="theme-color" content="#05090A" id="metaTheme">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body class="ready" data-page="verify">
+<script src="js/common.js"></script>
+<a class="skip" href="#main">Skip to content</a>
+<div class="app">
+<div id="siteHeader"></div>
+<main id="main">
+<section class="phead wrap" aria-labelledby="h1">
+ <h1 id="h1">Hash Verification</h1>
+ <p>Check that a downloaded file matches the SHA-256 hash published by its source.</p>
+ <div class="chips"><span class="chip"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-compare"/></svg>MATCH or MISMATCH</span><span class="chip"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-hash"/></svg>SHA-256 · SHA-384 · SHA-512</span><span class="chip"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-db"/></svg>Never uploaded</span></div>
+</section>
+<div class="wrap sec">
+<div class="tool cluster">
+<section class="card rise" aria-labelledby="vT">
+ <div class="card-h"><span class="lt s"><img src="assets/logo.png" alt=""></span><h2 id="vT">Hash Verification</h2><span class="tag">local only</span></div>
+ <div class="steps">
+  <div class="step"><div>
+   <h3>Choose the file</h3>
+   <div class="drop" id="drop">
+    <span class="big"><svg class="i" width="26" height="26" aria-hidden="true"><use href="#i-upload"/></svg></span><strong>Drag and drop a file here</strong>
+    <span class="s">The file is hashed in your browser and not uploaded.</span>
+    <button class="btn pri" id="browse" type="button"><svg class="i" width="17" height="17" aria-hidden="true"><use href="#i-file"/></svg>Browse files</button>
+    <input type="file" id="fileIn" hidden aria-label="Choose a file to verify">
+   </div>
+   <div id="vFile" class="fi" style="margin-top:12px" hidden></div>
+   <div class="tool-grid2" style="margin-top:14px;align-items:end">
+    <div><label class="lb" for="vAlgo">Algorithm</label><select class="sel" id="vAlgo"><option value="SHA-256" selected>SHA-256 (recommended)</option><option value="SHA-384">SHA-384</option><option value="SHA-512">SHA-512</option></select></div>
+    <div class="btns"><button class="btn" id="vCancel" type="button" hidden><svg class="i" width="17" height="17" aria-hidden="true"><use href="#i-x"/></svg>Cancel</button></div>
+   </div>
+   <p class="status" id="vMsg" role="status" aria-live="polite"></p>
+   <div id="vComputed" class="resbox" style="margin-top:12px" hidden>
+    <div class="meta-row"><span>Calculated <b id="vAlgoOut"></b> hash</span></div>
+    <p class="hashline" id="vHash"></p>
+    <div class="btns" style="margin-top:12px"><button class="btn" id="vCopy" type="button"><svg class="i" width="17" height="17" aria-hidden="true"><use href="#i-copy"/></svg>Copy computed hash</button></div>
+   </div>
+  </div></div>
+  <div class="step"><div>
+   <h3>Paste the hash you expect</h3>
+   <label class="lb sr" for="vRef">Reference hash</label>
+   <textarea class="ta" id="vRef" rows="2" style="min-height:76px" placeholder="Paste the published hash here" spellcheck="false" autocomplete="off" maxlength="400"></textarea>
+   <p class="hint">Letter case and spaces around the value are ignored. Output copied from <code>sha256sum</code> works too.</p>
+   <p class="status" id="vRefMsg" role="status" aria-live="polite"></p>
+  </div></div>
+  <div class="step"><div>
+   <h3>Result</h3>
+   <div class="verdict" id="verdict" role="status" aria-live="polite"><span class="vi"><svg class="i" width="26" height="26" aria-hidden="true"><use href="#i-compare"/></svg></span><div><div class="vt" id="vVerdict">WAITING</div><div class="vd" id="vVerdictText">Choose a file and paste a reference hash to compare.</div></div></div>
+   <div class="btns" style="margin-top:14px"><button class="btn" id="vClear" type="button"><svg class="i" width="17" height="17" aria-hidden="true"><use href="#i-x"/></svg>Clear</button></div>
+  </div></div>
+ </div>
+ <div class="notice" style="margin-top:22px"><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-info"/></svg><p><b>What a match means.</b> MATCH means the file's bytes produce the same hash as the reference, which is good evidence the file was not changed, as long as you trust where the reference hash came from. It does not prove a file is safe or free of malware.</p></div>
+ <p class="privnote"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-lock"/></svg><span>The file is hashed in your browser. It is not uploaded, and nothing you enter is stored.</span></p>
+</section>
+</div>
+</div>
+</main>
+<div id="siteFooter"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="js/config.js"></script>
+<script src="js/stack-hash.js"></script>
+<script src="js/verify.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Stack Password Checking and Hashing — Cybersecurity Toolkit</title>
+<meta name="description" content="Check password strength, generate passwords, hash and encrypt text and files, and verify file hashes. Everything runs locally in your browser.">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#05090A" id="metaTheme">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<noscript><style>#loader{display:none}body:not(.ready) .app{opacity:1}</style></noscript>
+</head>
+<body data-page="checker">
+<script src="js/common.js"></script>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- 1. LOADING SCREEN -->
+<div id="loader" class="load" role="status" aria-live="polite">
+ <div>
+  <div class="rings"><svg viewBox="0 0 230 230" fill="none" aria-hidden="true"><g class="rot"><circle cx="115" cy="115" r="110" stroke="var(--acc)" stroke-opacity=".55" stroke-dasharray="3 11" stroke-linecap="round"/></g><g class="rot2"><circle cx="115" cy="115" r="92" stroke="var(--acc2)" stroke-opacity=".4" stroke-dasharray="36 12"/></g></svg><span class="lt l glow"><img src="assets/logo.png" alt="Stack — Security Simplified logo"></span></div>
+  <h1>STACK PASSWORD CHECKING AND HASHING</h1>
+  <p>Initializing Secure Password Analysis...<i class="cur"></i></p>
+  <div class="bar" aria-hidden="true"><i></i></div>
+  <div class="boot" aria-hidden="true"><span>&gt; loading analysis engine ........ <b class="ok">ok</b></span><span>&gt; verifying local-only mode ...... <b class="ok">ok</b></span><span>&gt; storage access ............... <b class="ok">none</b></span></div>
+ </div>
+</div>
+
+<div class="app" id="app">
+
+<div id="siteHeader"></div>
+
+<main id="main">
+
+<!-- 3. HERO -->
+<section class="hero" id="top" aria-labelledby="h1">
+ <div class="scanline"></div>
+ <div class="wrap hero-g">
+  <div>
+   <h1 id="h1">Check Your Password Strength</h1>
+   <p class="sub">Analyze password security instantly with Stack Password Checker.</p>
+   <div class="chips"><span class="chip"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-lock"/></svg>Analyzed locally</span><span class="chip"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-db"/></svg>Nothing stored</span><span class="chip"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-scan"/></svg>Instant results</span></div>
+  </div>
+  <div class="radar" aria-hidden="true">
+   <svg class="r" viewBox="0 0 400 400" fill="none">
+    <circle cx="200" cy="200" r="190" stroke="currentColor" style="color:var(--line)" stroke-width="1"/>
+    <g class="rot"><circle cx="200" cy="200" r="160" stroke="var(--acc)" stroke-opacity=".55" stroke-width="1.2" stroke-dasharray="2 12" stroke-linecap="round"/></g>
+    <g class="rot2"><circle cx="200" cy="200" r="126" stroke="var(--acc2)" stroke-opacity=".5" stroke-width="1" stroke-dasharray="40 14 4 14"/></g>
+    <circle cx="200" cy="200" r="92" stroke="currentColor" style="color:var(--line)" stroke-width="1"/>
+    <path d="M200 10v380M10 200h380" stroke="currentColor" style="color:var(--line2)" stroke-width="1"/>
+   </svg>
+   <div class="sweep"></div>
+   <div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--acc);filter:drop-shadow(0 0 14px color-mix(in srgb,var(--acc) 55%,transparent))"><svg class="i" width="96" height="96" aria-hidden="true"><use href="#i-shieldchk"/></svg></div>
+   <div class="term"><span class="p">$</span> <span class="v">stack analyze --local</span><br>&gt; length ........ <span class="v" id="tLen">waiting</span><br>&gt; classes ....... <span class="v" id="tCls">waiting</span><br>&gt; stored ........ <span class="v">false</span></div>
+  </div>
+ </div>
+</section>
+
+<div class="wrap sec" id="toolkit">
+ <h2 class="sec-h">Security toolkit</h2>
+ <p class="sec-s">Everything runs in your browser. Passwords, messages, keys and files are never uploaded.</p>
+ <div class="tools"><a class="toolcard" href="text-crypto.html"><span class="ti"><svg class="i" width="22" height="22" aria-hidden="true"><use href="#i-type"/></svg></span><h3>Text Encryption &amp; Decryption</h3><p>Encrypt a message with a password using AES-256-GCM, then decrypt it again.</p><span class="go">Open tool <svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><a class="toolcard" href="hash.html"><span class="ti"><svg class="i" width="22" height="22" aria-hidden="true"><use href="#i-hash"/></svg></span><h3>Hash Generator</h3><p>Create a SHA-256 (or SHA-384 / SHA-512) hash of any text. Copy it or download it.</p><span class="go">Open tool <svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><a class="toolcard" href="file-hash.html"><span class="ti"><svg class="i" width="22" height="22" aria-hidden="true"><use href="#i-file"/></svg></span><h3>File Hashing</h3><p>Hash images, documents and other files. Drag in many at once. Large files are streamed.</p><span class="go">Open tool <svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><a class="toolcard" href="file-crypto.html"><span class="ti"><svg class="i" width="22" height="22" aria-hidden="true"><use href="#i-filelock"/></svg></span><h3>File Encryption &amp; Decryption</h3><p>Lock a file with a password, then decrypt it later to recover the original.</p><span class="go">Open tool <svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></span></a><a class="toolcard" href="verify.html"><span class="ti"><svg class="i" width="22" height="22" aria-hidden="true"><use href="#i-compare"/></svg></span><h3>Hash Verification</h3><p>Compare a file against a published hash and see MATCH or MISMATCH.</p><span class="go">Open tool <svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-arrow"/></svg></span></a></div>
+</div>
+
+<div class="wrap sec">
+ <div class="two">
+
+  <!-- 4–6. CHECKER CARD -->
+  <section class="card lv-none" id="checker" aria-labelledby="ct">
+   <div class="card-h"><span class="lt s"><img src="assets/logo.png" alt=""></span><h2 id="ct">Password Strength Analyzer</h2><span class="tag">local only</span></div>
+   <label class="lb" for="pw">Password</label>
+   <div class="field" id="field">
+    <input id="pw" type="password" placeholder="Enter your password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" maxlength="128" aria-describedby="privNote pwMsg" data-lpignore="true" data-1p-ignore>
+    <button class="ibtn" id="eye" type="button" aria-label="Show password" aria-pressed="false"><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-eye"/></svg></button>
+   </div>
+   <p class="msg" id="pwMsg" role="alert"></p>
+   <div class="row"><button class="btn pri" id="analyze" type="button"><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-scan"/></svg>Analyze Password</button><button class="btn" id="reset" type="button"><svg class="i" width="17" height="17" aria-hidden="true"><use href="#i-reset"/></svg>Reset</button></div>
+   <p class="priv" id="privNote"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-lock"/></svg>Your password is analyzed locally and is not stored.</p>
+
+   <div class="str">
+    <div class="str-top"><div><div class="str-k">Password strength</div><div class="str-v" id="strLabel">Waiting…</div></div>
+    <div class="pct"><span id="strPct" data-v="0">0</span><small>%</small></div></div>
+    <div class="meter" id="meter" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Security score"><i class="seg" style="--i:0"></i><i class="seg" style="--i:1"></i><i class="seg" style="--i:2"></i><i class="seg" style="--i:3"></i><i class="seg" style="--i:4"></i><i class="seg" style="--i:5"></i><i class="seg" style="--i:6"></i><i class="seg" style="--i:7"></i><i class="seg" style="--i:8"></i><i class="seg" style="--i:9"></i><i class="seg" style="--i:10"></i><i class="seg" style="--i:11"></i><i class="seg" style="--i:12"></i><i class="seg" style="--i:13"></i><i class="seg" style="--i:14"></i><i class="seg" style="--i:15"></i><i class="seg" style="--i:16"></i><i class="seg" style="--i:17"></i><i class="seg" style="--i:18"></i><i class="seg" style="--i:19"></i></div>
+    <div class="mscale" aria-hidden="true"><span>Weak</span><span>Medium</span><span>Strong</span></div>
+    <p class="sr" id="liveStatus" role="status" aria-live="polite"></p>
+   </div>
+   <ul class="checks" id="checks" aria-label="Security requirements"><li class="chk pend" data-k="0"><span class="ic"><svg class="i" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg></span><span>At least 12 characters</span><span class="st">Pending</span></li><li class="chk pend" data-k="1"><span class="ic"><svg class="i" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg></span><span>Uppercase letter</span><span class="st">Pending</span></li><li class="chk pend" data-k="2"><span class="ic"><svg class="i" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg></span><span>Lowercase letter</span><span class="st">Pending</span></li><li class="chk pend" data-k="3"><span class="ic"><svg class="i" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg></span><span>Number</span><span class="st">Pending</span></li><li class="chk pend" data-k="4"><span class="ic"><svg class="i" width="13" height="13" aria-hidden="true"><use href="#i-check"/></svg></span><span>Special character</span><span class="st">Pending</span></li></ul>
+  </section>
+
+  <div class="stack">
+   <!-- 7. REPORT -->
+   <section class="card quiet lv-none" id="report" aria-labelledby="rt">
+    <div class="card-h"><h2 id="rt">Security Analysis Report</h2><span class="tag" id="repTag" hidden>complete</span></div>
+    <div class="wait" id="reportWait"><span class="sc"></span><svg class="i" width="40" height="40" aria-hidden="true"><use href="#i-shield"/></svg><b id="waitTitle">No password analyzed yet</b><span id="waitText">Type a password to see a live score, then press “Analyze Password”.</span></div>
+    <div id="reportBody" hidden>
+     <div class="rep-top">
+      <div class="ring" role="img" id="ring" aria-label="Score"><svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="54" fill="none" stroke-width="9"/><circle class="fg" id="ringFg" cx="60" cy="60" r="54" fill="none" stroke-width="9"/></svg>
+       <div class="c"><div class="n"><span id="ringN" data-v="0">0</span></div><div class="o">/ 100</div></div></div>
+      <div class="rep-sum"><h3 id="repLabel"></h3><p id="repSum"></p></div>
+     </div>
+     <div class="stats">
+      <div class="stat"><div class="k">Password strength</div><div class="v" id="sStrength"></div></div>
+      <div class="stat"><div class="k">Security score</div><div class="v" id="sScore"></div></div>
+      <div class="stat"><div class="k">Password length</div><div class="v" id="sLen"></div></div>
+      <div class="stat"><div class="k">Uppercase</div><div class="v" id="sUp"></div></div>
+      <div class="stat"><div class="k">Lowercase</div><div class="v" id="sLow"></div></div>
+      <div class="stat"><div class="k">Numbers</div><div class="v" id="sNum"></div></div>
+      <div class="stat" style="grid-column:1/-1"><div class="k">Special characters</div><div class="v" id="sSpec"></div></div>
+     </div>
+     <div class="trace"><span class="p">$</span> <span class="v">stack analyze --local</span><br>&gt; classes ........ <span class="v" id="trCls"></span><br>&gt; entropy ........ <span class="v" id="trBits"></span><br>&gt; est. guess time . <span class="v" id="trTime"></span><br>&gt; password stored . <span class="v">false</span></div>
+     <p class="note-s">The guess-time figure is a rough estimate that assumes an offline attack at 10 billion guesses per second. A password that is reused or leaked is unsafe at any score.</p>
+    </div>
+   </section>
+
+   <!-- 8. RECOMMENDATIONS -->
+   <section class="card quiet" aria-labelledby="rc">
+    <div class="card-h"><h2 id="rc">Security Recommendations</h2></div>
+    <ul class="recs" id="recs" aria-live="polite"><li class="idle"><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-bulb"/></svg><span>Recommendations appear here after you analyze a password.</span></li></ul>
+   </section>
+  </div>
+ </div>
+</div>
+
+<!-- Password generator -->
+<div class="wrap sec">
+ <section class="card" id="generator" aria-labelledby="gt">
+  <div class="card-h"><h2 id="gt">Password Generator</h2><span class="tag">crypto-random</span></div>
+  <div class="gen">
+   <div>
+    <label class="lb" for="genOut">Generated password</label>
+    <div class="field"><input id="genOut" type="text" readonly spellcheck="false" autocomplete="off" placeholder="Press Generate"><button class="ibtn" id="genCopy" type="button" aria-label="Copy generated password"><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-copy"/></svg></button></div>
+    <p class="gen-meta" id="genMeta" role="status" aria-live="polite"></p>
+    <div class="row"><button class="btn pri" id="genBtn" type="button"><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-dice"/></svg>Generate</button><button class="btn" id="genUse" type="button"><svg class="i" width="17" height="17" aria-hidden="true"><use href="#i-scan"/></svg>Analyze it</button></div>
+    <p class="priv" id="genPriv"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-lock"/></svg>Generated in your browser with a cryptographically secure random generator. It is not sent or stored.</p>
+   </div>
+   <fieldset>
+    <legend>Options</legend>
+    <div class="lenrow"><label for="genLen">Length</label><output id="genLenVal" for="genLen">16</output></div>
+    <input id="genLen" type="range" min="8" max="64" value="16" aria-describedby="genMeta">
+    <label class="opt"><input type="checkbox" id="gUpper" checked>Uppercase letters (A–Z)</label>
+    <label class="opt"><input type="checkbox" id="gLower" checked>Lowercase letters (a–z)</label>
+    <label class="opt"><input type="checkbox" id="gNum" checked>Numbers (0–9)</label>
+    <label class="opt"><input type="checkbox" id="gSym" checked>Symbols (! @ # $ …)</label>
+    <label class="opt"><input type="checkbox" id="gAmb">Avoid look-alike characters (0 O 1 l I)</label>
+   </fieldset>
+  </div>
+ </section>
+</div>
+
+<!-- 9–11. HISTORY -->
+<div class="wrap sec">
+ <section class="card" id="history" aria-labelledby="ht">
+  <div class="card-h"><h2 id="ht">Analysis History</h2><button class="btn sm danger" id="clearAll" type="button" style="margin-left:auto"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-trash"/></svg>Clear History</button></div>
+  <ul class="hist" id="histList" style="list-style:none;margin:0;padding:0"></ul>
+  <p class="hist-empty" id="histEmpty" hidden>No analyses yet. Analyze a password and a summary will appear here.</p>
+  <p class="hist-note"><svg class="i" width="16" height="16" aria-hidden="true"><use href="#i-lock"/></svg><span id="histNote">Only strength, score, length and time are kept. Passwords are never saved.</span></p>
+ </section>
+</div>
+
+<!-- 12–13. INFO + PRIVACY -->
+<div class="wrap sec" id="about">
+ <div class="two">
+  <section class="card quiet" aria-labelledby="wt"><div class="card-h"><h2 id="wt">Why Password Strength Matters</h2></div><ul class="why"><li><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-ruler"/></svg><div><b>Long passwords are harder to guess</b><span>Every extra character multiplies the work an attacker has to do.</span></div></li><li><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-key"/></svg><div><b>Unique passwords reduce risk</b><span>If one site is breached, your other accounts stay safe.</span></div></li><li><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-layers"/></svg><div><b>Mix character types</b><span>Capitals, numbers and symbols widen the pool of possible passwords.</span></div></li><li><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-repeat"/></svg><div><b>Never reuse important passwords</b><span>Email and banking passwords should never appear anywhere else.</span></div></li><li><svg class="i" width="20" height="20" aria-hidden="true"><use href="#i-users"/></svg><div><b>Never share passwords</b><span>No legitimate service will ask you for yours.</span></div></li></ul></section>
+  <div class="stack">
+   <section class="card quiet" aria-labelledby="zt"><div class="card-h"><h2 id="zt">Nothing leaves your device</h2></div><ul class="about-list">
+   <li><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg><span><b>Passwords</b> are analyzed in your browser. Only a summary (strength, score, length) is saved to history.</span></li>
+   <li><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg><span><b>Messages and files</b> are encrypted, decrypted and hashed locally with the Web Crypto API.</span></li>
+   <li><svg class="i" width="18" height="18" aria-hidden="true"><use href="#i-check"/></svg><span><b>Encryption keys</b> are derived from your password each time. They are never stored or sent.</span></li></ul></section>
+   <section class="card privacy" aria-labelledby="pt"><div class="big"><svg class="i" width="26" height="26" aria-hidden="true"><use href="#i-lock"/></svg></div><div><h3 id="pt">Privacy First</h3><p>Stack Password Checker analyzes your password for strength. The application should not store or transmit the actual password.</p></div></section>
+  </div>
+ </div>
+</div>
+
+</main>
+
+<div id="siteFooter"></div>
+</div>
+
+<!-- Confirmation dialog (delete one / clear all) -->
+<dialog class="modal" id="confirm" aria-labelledby="cT" aria-describedby="cD">
+ <form method="dialog">
+  <div class="ic"><svg class="i" width="22" height="22" aria-hidden="true"><use href="#i-trash"/></svg></div>
+  <h3 id="cT">Delete this record?</h3>
+  <p id="cD"></p>
+  <div class="row"><button class="btn sm" value="cancel" id="cNo">Keep it</button><button class="btn sm danger fill" value="confirm" id="cOk">Delete</button></div>
+ </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
